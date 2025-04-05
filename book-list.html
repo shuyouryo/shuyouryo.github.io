@@ -1,0 +1,311 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <!-- This helps keep the web page aligned and readable when the width changes -->
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Book List | Silent Library</title>
+    
+    <!-- Bootstrap 5 CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
+    
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=EB+Garamond:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet">
+    
+    <!-- Common CSS -->
+    <link href="css/common.css" rel="stylesheet">
+    
+    <!-- Page-specific CSS -->
+    <style>
+        .booklist-container {
+            max-width: 1200px;
+            margin: 30px auto;
+            padding: 30px;
+            background-color: #F1E9D2;
+            border-radius: 8px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.3);
+            color: #191970;
+        }
+        
+        .booklist-title {
+            color: #191970;
+            border-bottom: 2px solid #191970;
+            padding-bottom: 10px;
+            margin-bottom: 25px;
+            text-align: center;
+        }
+        /* book list grid styling */
+        .book-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 20px;
+        }
+        
+        .book-card {
+            display: flex;
+            flex-direction: column;
+            height: 100%;
+        }
+        
+        .book-img-container {
+            height: 250px;
+            display: flex;
+            align-items: flex-end;
+            justify-content: center;
+            margin-bottom: 10px;
+        }
+        
+        .book-img {
+            width: auto;
+            height: 200px;
+            max-width: 100%;
+            border-radius: 8px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.2);
+            transition: transform 0.3s;
+            object-fit: contain;
+        }
+        
+        .book-img:hover {
+            transform: scale(1.05);
+        }
+        
+        .book-title {
+            color: #0f0f4d;
+            font-weight: bold;
+            text-align: center;
+            margin-top: 10px;
+            min-height: 50px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        
+        .book-title:hover {
+            text-decoration: underline;
+        }
+        /* filter section container styling */
+        .filter-section {
+            background-color: rgba(175, 219, 245, 0.2);
+            padding: 15px;
+            border-radius: 8px;
+            border: 1px solid #AFDBF5;
+        }
+        /* bold elelments in filter section */
+        .filter-section strong {
+            color: #0f0f4d;
+            display: block;
+            margin-bottom: 10px;
+        }
+        /* radio button styling */
+        .filter-section input[type="radio"] {
+            margin-right: 8px;
+        }
+        /* filter section horizontal rules */
+        .filter-section hr {
+            border-color: #AFDBF5;
+            margin: 10px 0;
+        }
+        
+        .filter-btn {
+            background-color: #9BC4E2;
+            color: #191970;
+            border: none;
+            width: 100%;
+            margin-bottom: 15px;
+            padding: 8px;
+            border-radius: 4px;
+            transition: background-color 0.3s;
+        }
+        /* mouse over filter button styling */
+        .filter-btn:hover {
+            background-color: #7DAED4;
+        }
+        /* pagination container styling */
+        .pagination-container {
+            margin-top: 30px;
+            text-align: center;
+            color: #191970;
+            font-size: 1.1rem;
+        }
+        /* Responsive styles */
+        @media (max-width: 992px) {
+            .book-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+        
+        @media (max-width: 576px) {
+            .book-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .book-img-container {
+                height: 180px;
+            }
+            
+            .book-img {
+                height: 150px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Sticky Header -->
+    <header class="sticky-header">
+        <!-- Top Section with Logo, Title & Login -->
+        <div class="header-main">
+            <div class="container">
+                <div class="row align-items-center">
+                    <div class="col logo-container" id="homeLink">
+                        <!-- Logo Image & Title -->
+                        <img src="images/silent-library-logo.png" alt="Library Logo" class="logo-img">
+                        <span class="header-title">Silent Library</span>
+                    </div>
+                    <div class="col-auto">
+                        <!-- Login Section -->
+                        <div id="loginSection">
+                            <!-- This will be dynamically replaced based on login status -->
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Bottom Navigation Section -->
+        <div class="header-nav">
+            <div class="container">
+                <div class="d-flex align-items-center" id="navSection">
+                    <!-- This will be dynamically replaced based on login status -->
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- Main Content -->
+    <main class="main-content">
+        <div class="booklist-container">
+            <h1 class="booklist-title">Book List</h1>
+            
+            <div class="container">
+                <div class="row">
+                    <!-- Book Grid Mock up-->
+                    <!-- In Live requires backend to display and sort  -->
+                    <div class="col-md-9">
+                        <div class="book-grid">
+                            <!-- This section mocks up calling up the book details page -->
+                            <!-- In live, when navigating, the booklibraryid is passed and the next page details are pulled from the backend to be displayed on the page      --> 
+                            <div class="book-card">
+                                <div class="book-img-container">
+                                    <a href="book-new.html"><img src="images/book-new.jpeg" alt="Good Dirt" class="book-img"></a>
+                                </div>
+                                <a href="book-new.html" class="book-title">Good Dirt</a>
+                            </div>
+                            <div class="book-card">
+                                <div class="book-img-container">
+                                    <a href="book-fiction.html"><img src="images/book-fiction.jpeg" alt="Harry Potter and the Philosopher's Stone" class="book-img"></a>
+                                </div>
+                                <a href="book-fiction.html" class="book-title">Harry Potter and the Philosopher's Stone</a>
+                            </div>
+                            <div class="book-card">
+                                <div class="book-img-container">
+                                    <a href="book-non-fiction.html"><img src="images/book-non-fiction.png" alt="The Domestic Goddess Wannabe Bakes" class="book-img"></a>
+                                </div>
+                                <a href="book-non-fiction.html" class="book-title">The Domestic Goddess Wannabe Bakes</a>
+                            </div>
+                            <div class="book-card">
+                                <div class="book-img-container">
+                                    <a href="book-new-2.html"><img src="images/book-new-2.png" alt="Good Dirt" class="book-img"></a>
+                                </div>
+                                <a href="book-new-2.html" class="book-title">Homeseeking</a>
+                            </div>
+                            <div class="book-card">
+                                <div class="book-img-container">
+                                    <a href="book-fiction-2.html"><img src="images/book-fiction-2.jpeg" alt="Harry Potter and the Philosopher's Stone" class="book-img"></a>
+                                </div>
+                                <a href="book-fiction-2.html" class="book-title">Twilight</a>
+                            </div>
+                            <div class="book-card">
+                                <div class="book-img-container">
+                                    <a href="book-non-fiction-2.html"><img src="images/book-non-fiction-2.jpg" alt="The Domestic Goddess Wannabe Bakes" class="book-img"></a>
+                                </div>
+                                <a href="book-non-fiction-2.html" class="book-title">Hood Feminism</a>
+                            </div>
+                            <div class="book-card">
+                                <div class="book-img-container">
+                                    <a href="book-new-3.html"><img src="images/book-new-3.png" alt="Good Dirt" class="book-img"></a>
+                                </div>
+                                <a href="book-new-3.html" class="book-title">Good Girl</a>
+                            </div>
+                            <div class="book-card">
+                                <div class="book-img-container">
+                                    <a href="book-fiction-3.html"><img src="images/book-fiction-3.jpeg" alt="Harry Potter and the Philosopher's Stone" class="book-img"></a>
+                                </div>
+                                <a href="book-fiction-3.html" class="book-title">Gone with the Wind</a>
+                            </div>
+                            <div class="book-card">
+                                <div class="book-img-container">
+                                    <a href="book-non-fiction-3.html"><img src="images/book-non-fiction-3.jpg" alt="The Domestic Goddess Wannabe Bakes" class="book-img"></a>
+                                </div>
+                                <a href="book-non-fiction-3.html" class="book-title">The Life-Changing Magic of Tidying Up</a>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Filter Section Mock up-->
+                    <!-- In live requires backend tags to filter & sort  -->
+                    <div class="col-md-3">
+                        <button class="filter-btn">Filter</button>
+                        <div class="filter-section">
+                            <strong>Filter Selection</strong>
+                            <div><input type="radio" name="category"> Fiction</div>
+                            <div><input type="radio" name="category"> Adult Fiction</div>
+                            <div><input type="radio" name="category"> Children's Fiction</div>
+                            <div><input type="radio" name="category"> Young Adult</div>
+                            <div><input type="radio" name="category"> Contemporary</div>
+                            <div><input type="radio" name="category"> Historical Fiction</div>
+                            <hr>
+                            <div><input type="radio" name="category"> Non Fiction</div>
+                            <div><input type="radio" name="category"> Cooking</div>
+                            <div><input type="radio" name="category"> Civil Rights</div>
+                            <div><input type="radio" name="category"> Civil Justice</div>
+                            <div><input type="radio" name="category"> Gardening</div>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Pagination Navigation mockup -->
+                <div class="pagination-container">
+                    <span>1 &bull; 2 &bull; 3 &bull; ..... &bull; 101</span>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <!-- Common Footer -->
+    <footer class="common-footer">
+        <div class="container">
+            <div class="footer-content">
+                <!-- Footer buttons -->
+                <div class="footer-buttons">
+                    <button class="footer-button" id="footerTop">Top of Page</button>
+                    <button class="footer-button" id="footerAbout">About Us</button>
+                    <button class="footer-button" id="footerPrivacy">Privacy Policy</button>
+                    <button class="footer-button" id="footerContacts">Contacts</button>
+                    <button class="footer-button" id="footerSitemap">Sitemap</button>
+                </div>
+                <!-- Footer credits -->
+                <div class="footer-credits">
+                    <span>Created by Pixel Elites</span>
+                    <img src="images/pixel-elites.png" alt="Pixel Elites Logo" class="footer-logo">
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Bootstrap 5 JS Bundle with Popper -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
+    
+    <!-- Common JavaScript -->
+    <script src="js/common.js"></script>
+</body>
+</html>

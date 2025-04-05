@@ -1,0 +1,619 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <!-- Meta tags -->
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Member Details | Silent Library</title>
+    
+    <!-- Bootstrap 5 CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
+    
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=EB+Garamond:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet">
+    
+    <!-- Common CSS -->
+    <link href="css/common.css" rel="stylesheet">
+       
+    <!-- Page-specific CSS --> 
+    <style>
+        .member-container {
+            max-width: 900px;
+            margin: 30px auto;
+            padding: 30px;
+            background-color: #F1E9D2;
+            border-radius: 8px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.3);
+            color: #191970;
+        }
+        
+        /* Centered headings */
+        .member-title {
+            color: #191970;
+            border-bottom: 2px solid #191970;
+            padding-bottom: 10px;
+            margin-bottom: 25px;
+            text-align: center;
+        }
+        
+        .section-title {
+            color: #0f0f4d;
+            font-size: 1.3rem;
+            margin: 25px 0 15px 0;
+            text-align: center;
+        }
+        
+        .login-message {
+            text-align: center;
+            margin: 20px 0;
+        }
+        /* table styles */
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 20px 0;
+            color: #191970;
+        }
+        
+        th {
+            background-color: #0f0f4d;
+            color: #F1E9D2;
+            padding: 12px;
+            text-align: left;
+        }
+        
+        td {
+            padding: 10px 12px;
+            border-bottom: 1px solid #AFDBF5;
+        }
+        /* This creates a zebra-striping effect on even numbered rows to aid readability */
+        tr:nth-child(even) {
+            background-color: rgba(175, 219, 245, 0.2);
+        }
+        /* background color changes when this element is moused over */
+        tr:hover {
+            background-color: rgba(175, 219, 245, 0.4);
+        }
+        /* member list searchbox styles */
+        .search-box {
+            width: 100%;
+            padding: 10px;
+            margin: 15px 0;
+            border: 1px solid #AFDBF5;
+            border-radius: 4px;
+            background-color: #F1E9D2;
+            color: #191970;
+        }
+        
+        .search-box::placeholder {
+            color: #6c757d;
+        }
+        /* pagination styles */
+        .pagination {
+            display: flex;
+            justify-content: center;
+            margin-top: 20px;
+        }
+        
+        .pagination button {
+            margin: 0 5px;
+            padding: 5px 10px;
+            background-color: #0f0f4d;
+            color: #F1E9D2;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+        /* background color changes when this button is moused over */
+        .pagination button:hover {
+            background-color: #191970;
+        }
+        /* pagination button color when active */
+        .pagination button.active {
+            background-color: #AFDBF5;
+            color: #191970;
+            font-weight: bold;
+        }
+        /* pagination button when not active */
+        .pagination button:disabled {
+            background-color: #cccccc;
+            cursor: not-allowed;
+        }
+        /* Responsive styles */
+        @media (max-width: 768px) {
+            table {
+                display: block;
+                overflow-x: auto;
+            }
+            
+            .member-container {
+                padding: 20px;
+            }
+            
+            .pagination {
+                flex-wrap: wrap;
+            }
+            
+            .pagination button {
+                margin: 2px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Sticky Header -->
+    <header class="sticky-header">
+        <!-- Top Section with Logo, Title & Login -->
+        <div class="header-main">
+            <div class="container">
+                <div class="row align-items-center">
+                    <!-- Logo Image & Title -->
+                    <div class="col logo-container" id="homeLink">
+                        <img src="images/silent-library-logo.png" alt="Library Logo" class="logo-img">
+                        <span class="header-title">Silent Library</span>
+                    </div>
+                    <div class="col-auto">
+                        <!-- Login Section -->
+                        <!-- This dynamically changes based on login status -->
+                        <div id="loginSection"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- Bottom Navigation Section -->
+        <div class="header-nav">
+            <div class="container">
+                <!-- This dynamically changes based on login status -->
+                <div class="d-flex align-items-center" id="navSection"></div>
+            </div>
+        </div>
+    </header>
+    <!-- Main Content -->
+    <!-- This dynamically changes based on login status -->
+    <main class="main-content">
+        <div class="member-container" id="memberContent"></div>
+    </main>
+    <!-- Common Footer section -->
+    <footer class="common-footer">
+        <div class="container">
+            <div class="footer-content">
+                <!-- Footer buttons - Now in horizontal layout with all new buttons -->
+                <div class="footer-buttons">
+                    <button class="footer-button" id="footerTop">Top of Page</button>
+                    <button class="footer-button" id="footerAbout">About Us</button>
+                    <button class="footer-button" id="footerPrivacy">Privacy Policy</button>
+                    <button class="footer-button" id="footerContacts">Contacts</button>
+                    <button class="footer-button" id="footerSitemap">Sitemap</button>
+                </div>
+                <!-- Footer credits -->
+                <div class="footer-credits">
+                    <span>Created by Pixel Elites</span>
+                    <img src="images/pixel-elites.png" alt="Pixel Elites Logo" class="footer-logo">
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Bootstrap 5 JS Bundle with Popper -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
+    
+    <!-- Common JavaScript is not used -->
+     
+    <!-- Page-specific JavaScript (lots needed for this page) -->
+    <!-- script to initialize login status -->
+    <script>
+        window.loginState = {
+            _status: 'none',
+            
+            get status() {
+                return this._status;
+            },
+            
+            set status(value) {
+                this._status = value;
+                this.updateAllUI();
+            },
+            
+            updateAllUI: function() {
+                updateLoginUI();
+                updateNavUI();
+                if (typeof updateMemberContent === 'function') {
+                    updateMemberContent();
+                }
+            }
+        };
+        // function to navigate to pages
+        function navigateTo(page) {
+            window.location.href = page;
+        }
+        // Display header UI elements 
+        function updateNavUI() {
+            const navSection = document.getElementById('navSection');
+            if (!navSection) return;
+            
+            if (window.loginState.status === 'none') {
+                navSection.innerHTML = `
+                    <button class="nav-button" id="bookListBtn">Book List</button>
+                    <button class="nav-button" id="eventsBtn">Events</button>
+                    <button class="nav-button disabled" disabled>Member Details</button>
+                    <div class="search-bar ms-auto">
+                        <input type="text" class="search-input" placeholder="Search by Book Title, Author, Publisher, ISBN">
+                    </div>
+                `;
+            } else {
+                navSection.innerHTML = `
+                    <button class="nav-button" id="bookListBtn">Book List</button>
+                    <button class="nav-button" id="eventsBtn">Events</button>
+                    <button class="nav-button" id="memberDetailsBtn">Member Details</button>
+                    <div class="search-bar ms-auto">
+                        <input type="text" class="search-input" placeholder="Search by Book Title, Author, Publisher, ISBN">
+                    </div>
+                `;
+            }
+            
+            document.getElementById('bookListBtn')?.addEventListener('click', () => navigateTo('book-list.html'));
+            document.getElementById('eventsBtn')?.addEventListener('click', () => navigateTo('events.html'));
+            document.getElementById('memberDetailsBtn')?.addEventListener('click', () => navigateTo('member-details.html'));
+        }
+        // update the UI after a change in login details
+        function updateLoginUI() {
+            const loginSection = document.getElementById('loginSection');
+            if (!loginSection) return;
+            // This is displayed if no one is logged in
+            if (window.loginState.status === 'none') {
+                loginSection.innerHTML = `
+                    <div class="login-container">
+                        <input type="text" class="form-control login-input" id="loginId" placeholder="Library ID">
+                        <input type="password" class="form-control login-input" id="loginPassword" placeholder="Password">
+                        <button type="button" class="btn btn-login" id="loginButton">Log In</button>
+                    </div>
+                `;
+                
+                document.getElementById('loginButton')?.addEventListener('click', handleLogin);
+                document.getElementById('loginPassword')?.addEventListener('keypress', function(e) {
+                    if (e.key === 'Enter') handleLogin();
+                });
+            // This is displayed if a memeber or staff is logged in    
+            } else {
+                const roleText = window.loginState.status === 'member' ? 'Member' : 'Staff';
+                loginSection.innerHTML = `
+                    <div class="login-container">
+                        <div class="welcome-text">Welcome</div>
+                        <div class="role-text">${roleText}</div>
+                        <button type="button" class="btn btn-logout" id="logoutButton">Log Out</button>
+                    </div>
+                `;
+                
+                document.getElementById('logoutButton')?.addEventListener('click', handleLogout);
+            }
+        }
+        // Login functionality 
+        // This is a workaround to trigger dynamic elements on this page 
+        // Live code requires backend
+        function handleLogin() {
+            const id = document.getElementById('loginId')?.value.trim();
+            const password = document.getElementById('loginPassword')?.value.trim();
+            // if member logs in
+            if (id === 'member' && password === 'member') {
+                window.loginState.status = 'member';
+            // if staff logs in    
+            } else if (id === 'staff' && password === 'staff') {
+                window.loginState.status = 'staff';
+            // otherwise inform user log in fail    
+            } else {
+                alert('Invalid credentials. Please try again.');
+                if (document.getElementById('loginId')) {
+                    document.getElementById('loginId').value = '';
+                    document.getElementById('loginPassword').value = '';
+                }
+            }
+        }
+        // Log out functionality
+        function handleLogout() {
+            window.loginState.status = 'none';
+        }
+
+        // Pagination functionality
+        function setupPagination(tableId, rowsPerPage = 5) {
+            const table = document.getElementById(tableId);
+            if (!table) return;
+            
+            const tbody = table.querySelector('tbody');
+            const rows = Array.from(tbody.querySelectorAll('tr'));
+            const pageCount = Math.ceil(rows.length / rowsPerPage);
+            
+            // Create pagination container 
+            let paginationContainer = table.nextElementSibling;
+            if (!paginationContainer || !paginationContainer.classList.contains('pagination')) {
+                paginationContainer = document.createElement('div');
+                paginationContainer.className = 'pagination';
+                table.parentNode.insertBefore(paginationContainer, table.nextSibling);
+            }
+            
+            function showPage(page) {
+                const start = (page - 1) * rowsPerPage;
+                const end = start + rowsPerPage;
+                
+                rows.forEach((row, index) => {
+                    row.style.display = (index >= start && index < end) ? '' : 'none';
+                });
+                
+                // Update pagination buttons
+                updatePaginationButtons(page, pageCount);
+            }
+            // Function for pagination - untested - implemented just for visuals at the moment
+            function updatePaginationButtons(currentPage, totalPages) {
+                paginationContainer.innerHTML = '';
+                
+                // Pagination Previous button
+                const prevButton = document.createElement('button');
+                prevButton.innerHTML = '&laquo;';
+                prevButton.disabled = currentPage === 1;
+                prevButton.addEventListener('click', () => showPage(currentPage - 1));
+                paginationContainer.appendChild(prevButton);
+                
+                // Pagination Page buttons
+                const maxVisibleButtons = 5;
+                let startPage = Math.max(1, currentPage - Math.floor(maxVisibleButtons / 2));
+                let endPage = Math.min(totalPages, startPage + maxVisibleButtons - 1);
+                
+                if (endPage - startPage + 1 < maxVisibleButtons) {
+                    startPage = Math.max(1, endPage - maxVisibleButtons + 1);
+                }
+                
+                if (startPage > 1) {
+                    const firstButton = document.createElement('button');
+                    firstButton.textContent = '1';
+                    firstButton.addEventListener('click', () => showPage(1));
+                    paginationContainer.appendChild(firstButton);
+                    
+                    if (startPage > 2) {
+                        const ellipsis = document.createElement('span');
+                        ellipsis.textContent = '...';
+                        paginationContainer.appendChild(ellipsis);
+                    }
+                }
+                
+                for (let i = startPage; i <= endPage; i++) {
+                    const pageButton = document.createElement('button');
+                    pageButton.textContent = i;
+                    if (i === currentPage) {
+                        pageButton.classList.add('active');
+                    }
+                    pageButton.addEventListener('click', () => showPage(i));
+                    paginationContainer.appendChild(pageButton);
+                }
+                
+                if (endPage < totalPages) {
+                    if (endPage < totalPages - 1) {
+                        const ellipsis = document.createElement('span');
+                        ellipsis.textContent = '...';
+                        paginationContainer.appendChild(ellipsis);
+                    }
+                    
+                    const lastButton = document.createElement('button');
+                    lastButton.textContent = totalPages;
+                    lastButton.addEventListener('click', () => showPage(totalPages));
+                    paginationContainer.appendChild(lastButton);
+                }
+                
+                // Next button
+                const nextButton = document.createElement('button');
+                nextButton.innerHTML = '&raquo;';
+                nextButton.disabled = currentPage === totalPages;
+                nextButton.addEventListener('click', () => showPage(currentPage + 1));
+                paginationContainer.appendChild(nextButton);
+            }
+            
+            // Initialize with first page
+            showPage(1);
+        }
+        // function to dynamically update the page based on login user
+        function updateMemberContent() {
+            const memberContent = document.getElementById('memberContent');
+            if (!memberContent) return;
+            // Please log in
+            // Note this is a placeholder - user should not be able to enter this page without logging in 
+            if (window.loginState.status === 'none') {
+                memberContent.innerHTML = `
+                    <h1 class="member-title">Please Log In</h1>
+                    <p class="login-message">You need to log in to view your member details.</p>
+                `;
+            } 
+            // Display Member details, Member Borrowing List
+            // Details are placeholder info. Real data needs to be taken from backend DB
+            else if (window.loginState.status === 'member') {
+                memberContent.innerHTML = `
+                    <h1 class="member-title">Member Details</h1>
+                    <div class="member-info">
+                        <p><strong>Name:</strong> John Crow</p>
+                        <p><strong>ID:</strong> 4441171</p>
+                        <p><strong>Type:</strong> Regular Member</p>
+                    </div>
+                    <h2 class="section-title">Borrowing Details</h2>
+                    <table id="borrowedBooksTable">
+                        <thead>
+                            <tr>
+                                <th>Book Borrowed</th>
+                                <th>Library ID</th>
+                                <th>Borrow Date</th>
+                                <th>Due Date</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>To Kill a Mockingbird</td>
+                                <td>1000999</td>
+                                <td>10 Mar 2025</td>
+                                <td>10 Apr 2025</td>
+                            </tr>
+                            <tr>
+                                <td>Go Set a Watchman</td>
+                                <td>1000998</td>
+                                <td>10 Mar 2025</td>
+                                <td>10 Apr 2025</td>
+                            </tr>
+                            <tr>
+                                <td>1984</td>
+                                <td>1000997</td>
+                                <td>15 Mar 2025</td>
+                                <td>15 Apr 2025</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                `;
+            } 
+            // Display Staff details, Staff Borrowing List table, Member List table
+            // Details are placeholder info. Real data needs to be taken from backend DB
+            else if (window.loginState.status === 'staff') {
+                memberContent.innerHTML = `
+                    <h1 class="member-title">Staff Details</h1>
+                    <div class="member-info">
+                        <p><strong>Name:</strong> Justine Ho</p>
+                        <p><strong>ID:</strong> AAA-4321</p>
+                        <p><strong>Type:</strong> Library Assistant</p>
+                    </div>
+                    <h2 class="section-title">Borrowing Details</h2>
+                    <table id="staffBorrowedBooksTable">
+                        <thead>
+                            <tr>
+                                <th>Book Borrowed</th>
+                                <th>Library ID</th>
+                                <th>Borrow Date</th>
+                                <th>Due Date</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>Welcome To Tranquility</td>
+                                <td>1001799</td>
+                                <td>10 Mar 2025</td>
+                                <td>10 Apr 2025</td>
+                            </tr>
+                            <tr>
+                                <td>None </td>
+                                <td> </td>
+                                <td> </td>
+                                <td> </td>
+                            </tr>
+                            <tr>
+                                <td>None </td>
+                                <td> </td>
+                                <td> </td>
+                                <td> </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                    <h2 class="section-title">Members List</h2>
+                    <input type="text" class="search-box" placeholder="Search by Name, ID Number">
+                    <table id="membersListTable">
+                        <thead>
+                            <tr>
+                                <th>Member</th>
+                                <th>Member ID</th>
+                                <th>Borrowed</th>
+                                <th>Overdue</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>John Crow</td>
+                                <td>4441171</td>
+                                <td>2</td>
+                                <td>0</td>
+                            </tr>
+                            <tr>
+                                <td>Numair bin Hamza</td>
+                                <td>4441172</td>
+                                <td>1</td>
+                                <td>1</td>
+                            </tr>
+                            <tr>
+                                <td>Innpachelvah V.</td>
+                                <td>4441173</td>
+                                <td>1</td>
+                                <td>0</td>
+                            </tr>
+                            <tr>
+                                <td>Rachel Choo</td>
+                                <td>4441174</td>
+                                <td>2</td>
+                                <td>0</td>
+                            </tr>
+                            <tr>
+                                <td>Inn Ilu</td>
+                                <td>4441175</td>
+                                <td>2</td>
+                                <td>0</td>
+                            </tr>
+                            <tr>
+                                <td>Jane Doe</td>
+                                <td>4441176</td>
+                                <td>3</td>
+                                <td>0</td>
+                            </tr>
+                            <tr>
+                                <td>John Smith</td>
+                                <td>4441177</td>
+                                <td>1</td>
+                                <td>1</td>
+                            </tr>
+                            <tr>
+                                <td>Emily Johnson</td>
+                                <td>4441178</td>
+                                <td>0</td>
+                                <td>0</td>
+                            </tr>
+                            <tr>
+                                <td>Michael Brown</td>
+                                <td>4441179</td>
+                                <td>2</td>
+                                <td>0</td>
+                            </tr>
+                            <tr>
+                                <td>Sarah Davis</td>
+                                <td>4441180</td>
+                                <td>1</td>
+                                <td>0</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                `;
+                
+                // Setup pagination only for members list table
+                setupPagination('membersListTable', 5);
+                
+                // Search functionality
+                // Not working full implementation requires backend
+                const searchBox = document.querySelector('.search-box');
+                const memberRows = document.querySelectorAll('#membersListTable tbody tr');
+                // search box is a mockup & does not fully function
+                if (searchBox) {
+                    searchBox.addEventListener('input', function() {
+                        const searchTerm = this.value.toLowerCase();
+                        memberRows.forEach(row => {
+                            row.style.display = row.textContent.toLowerCase().includes(searchTerm) ? '' : 'none';
+                        });
+                        
+                        // Update pagination after search
+                        setupPagination('membersListTable', 5);
+                    });
+                }
+            }
+        }
+        // Add event EventListeners for navigation to other pages
+        document.addEventListener('DOMContentLoaded', function() {
+            window.loginState.updateAllUI();
+            
+            document.getElementById('homeLink')?.addEventListener('click', () => navigateTo('index.html'));
+            document.getElementById('footerTop')?.addEventListener('click', () => {
+                window.scrollTo({ top: 0, behavior: 'smooth' });
+            });
+            document.getElementById('footerAbout')?.addEventListener('click', () => navigateTo('about-us.html'));
+            document.getElementById('footerPrivacy')?.addEventListener('click', () => navigateTo('privacy-policy.html'));
+            document.getElementById('footerContacts')?.addEventListener('click', () => navigateTo('contacts.html'));
+            document.getElementById('footerSitemap')?.addEventListener('click', () => navigateTo('sitemap.html'));
+        });
+    </script>
+</body>
+</html>

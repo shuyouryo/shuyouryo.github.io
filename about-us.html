@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <!-- Meta tags -->
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>About Us | Silent Library</title>
+    
+    <!-- Bootstrap 5 CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
+    
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=EB+Garamond:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet">
+    
+    <!-- Common CSS -->
+    <link href="css/common.css" rel="stylesheet">
+    
+    <!-- Page-specific CSS -->
+    <style>
+        .about-container {
+            max-width: 900px;
+            margin: 30px auto;
+            padding: 30px;
+            background-color: #F1E9D2;
+            border-radius: 8px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.3);
+            color: #191970;
+        }
+        
+        .about-title {
+            color: #191970;
+            border-bottom: 2px solid #191970;
+            padding-bottom: 10px;
+            margin-bottom: 25px;
+            text-align: center;
+        }
+        
+        .about-section {
+            margin-bottom: 30px;
+        }
+        
+        .about-section h2 {
+            color: #0f0f4d;
+            font-size: 1.5rem;
+            margin-bottom: 15px;
+            padding-bottom: 5px;
+            border-bottom: 1px solid #AFDBF5;
+        }
+        
+        .about-quote {
+            font-style: italic;
+            font-size: 1.1rem;
+            text-align: center;
+            margin: 30px 0;
+            padding: 20px;
+            background-color: rgba(175, 219, 245, 0.2);
+            border-left: 4px solid #0f0f4d;
+        }
+        
+        .about-highlight {
+            font-weight: bold;
+            color: #0f0f4d;
+        }
+    </style>
+</head>
+<body>
+    <!-- Sticky Header -->
+    <header class="sticky-header">
+        <!-- Top Section with Logo, Title & Login -->
+        <div class="header-main">
+            <div class="container">
+                <div class="row align-items-center">
+                    <div class="col logo-container" id="homeLink">
+                        <!-- Logo Image & Title -->
+                        <img src="images/silent-library-logo.png" alt="Library Logo" class="logo-img">
+                        <span class="header-title">Silent Library</span>
+                    </div>
+                    <div class="col-auto">
+                        <!-- Login Section -->
+                        <!-- This will be dynamically change based on login status -->
+                        <div id="loginSection">
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Bottom Navigation Section -->
+        <div class="header-nav">
+            <div class="container">
+                <!-- This will dynamically change based on login status -->
+                <div class="d-flex align-items-center" id="navSection">
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- Main Content | About Us Page -->
+    <main class="main-content">
+        <div class="about-container">
+            <h1 class="about-title">About Silent Library</h1>
+            
+            <div class="about-section">
+                <h2>A Sanctuary of Women's Words Since 1975</h2>
+                <p>Welcome to <span class="about-highlight">Silent Library</span>, a haven for knowledge, empowerment, and community—founded in 1975 with a bold vision: to preserve and celebrate the written works <span class="about-highlight">by women, for women</span>.</p>
+            </div>
+            
+            <div class="about-section">
+                <h2>Our Collection: A Living Archive</h2>
+                <p>We house a <span class="about-highlight">vast and diverse collection</span> of books, journals, and publications spanning:</p>
+                <ul>
+                    <li><strong>Feminist theory & women's history</strong></li>
+                    <li><strong>Literature & poetry by female authors</strong></li>
+                    <li><strong>Practical guides</strong> (from housekeeping to self-sufficiency)</li>
+                    <li><strong>Rare manuscripts & grassroots zines</strong></li>
+                </ul>
+                <p>Whether you're a <span class="about-highlight">researcher, activist, or curious reader</span>, our shelves hold wisdom waiting to be uncovered.</p>
+            </div>
+            
+            <div class="about-section">
+                <h2>More Than Just Books—A Movement</h2>
+                <p>We believe in <span class="about-highlight">amplifying women's voices</span> beyond the page. That's why we host:</p>
+                <ul>
+                    <li><strong>Author talks & book launches</strong></li>
+                    <li><strong>Feminist discussions & workshops</strong></li>
+                    <li><strong>Creative writing circles & storytelling nights</strong></li>
+                    <li><strong>Research symposiums on gender studies</strong></li>
+                </ul>
+            </div>
+            
+            <div class="about-section">
+                <h2>Why "Silent" Library?</h2>
+                <p>The name reflects our origins—a quiet rebellion. In 1975, women's literature was often overlooked, so we created a space where these voices could <span class="about-highlight">speak loudly, even in silence</span>.</p>
+            </div>
+            
+            <div class="about-quote">
+                "A library is not just a collection of books—it's a revolution on shelves."
+            </div>
+            
+            <div class="about-section">
+                <h2>Join Us</h2>
+                <p>Whether you're here to <span class="about-highlight">study, share, or simply explore</span>, you belong at Silent Library. <strong>Discover the words that shaped our past—and help us write the future.</strong></p>
+            </div>
+        </div>
+    </main>
+
+    <!-- Common Footer -->
+    <footer class="common-footer">
+        <div class="container">
+            <div class="footer-content">
+                <!-- Footer buttons -->
+                <div class="footer-buttons">
+                    <button class="footer-button" id="footerTop">Top of Page</button>
+                    <button class="footer-button" id="footerAbout">About Us</button>
+                    <button class="footer-button" id="footerPrivacy">Privacy Policy</button>
+                    <button class="footer-button" id="footerContacts">Contacts</button>
+                    <button class="footer-button" id="footerSitemap">Sitemap</button>
+                </div>
+                <!-- Footer credits -->
+                <div class="footer-credits">
+                    <span>Created by Pixel Elites</span>
+                    <img src="images/pixel-elites.png" alt="Pixel Elites Logo" class="footer-logo">
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Bootstrap 5 JS Bundle with Popper -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
+    <!-- Common JavaScript -->
+    <script src="js/common.js"></script>
+    <!-- Page-specific javascript (None required) -->
+</body>
+</html>

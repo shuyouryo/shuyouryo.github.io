@@ -1,0 +1,228 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <!-- This helps keep the web page aligned and readable when the width changes -->
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Book Details | Silent Library</title>
+    
+    <!-- CSS from Bootstrap -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
+    
+    <!-- Font from Google -->
+    <link href="https://fonts.googleapis.com/css2?family=EB+Garamond:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet">
+    
+    <!-- Common CSS styles -->
+    <link href="css/common.css" rel="stylesheet">
+    
+    <!-- Page-specific CSS -->
+    <style>
+        .book-container {
+            max-width: 900px;
+            margin: 30px auto;
+            padding: 30px;
+            background-color: #F1E9D2;
+            border-radius: 8px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.3);
+            color: #191970;
+        }
+        
+        .book-title {
+            color: #191970;
+            border-bottom: 2px solid #191970;
+            padding-bottom: 10px;
+            margin-bottom: 25px;
+            text-align: center;
+        }
+        
+        .book-image {
+            max-width: 300px;
+            height: auto;
+            border-radius: 8px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.2);
+            margin-right: 30px;
+            float: left;
+        }
+        
+        .book-info {
+            overflow: hidden;
+            color: #191970;
+        }
+        
+        .book-info h3 {
+            color: #0f0f4d;
+            margin-bottom: 20px;
+        }
+        
+        .book-info p {
+            margin-bottom: 15px;
+            line-height: 1.6;
+        }
+        /* general parameters for availibility table */
+        .availability-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 20px 0;
+            color: #191970;
+        }
+        /* applies these parameters to cells in the table with this class */
+        .availability-table td {
+            padding: 10px 12px;
+            border-bottom: 1px solid #AFDBF5;
+            vertical-align: middle;
+        }
+        /* this style applies striped (alternating row) effect to the table */
+        .availability-table tr:nth-child(even) {
+            background-color: rgba(175, 219, 245, 0.2);
+        }
+        /* this style changes the background color when the parts of the table is moused over */
+        .availability-table tr:hover {
+            background-color: rgba(175, 219, 245, 0.4);
+        }
+        
+        .center-col {
+            text-align: center;
+        }
+        
+        .borrow-btn {
+            background-color: #0f0f4d;
+            color: #F1E9D2;
+            border: none;
+            padding: 5px 15px;
+            border-radius: 4px;
+            cursor: pointer;
+            transition: background-color 0.3s;
+            display: block;
+            margin: 0 auto;
+        }
+        /* this style changes the background color when the button is moused over */
+        .borrow-btn:hover {
+            background-color: #191970;
+        }
+        /* this button is merely a mock up and does nothing but can be clicked */
+        .borrow-btn:disabled {
+            background-color: #6c757d;
+            cursor: not-allowed;
+        }
+        /* Responsive styles */
+        @media (max-width: 768px) {
+            .book-image {
+                float: none;
+                display: block;
+                margin: 0 auto 20px;
+                max-width: 200px;
+            }
+            
+            .book-container {
+                padding: 20px;
+            }
+            
+            .availability-table {
+                display: block;
+                overflow-x: auto;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Sticky Header -->
+    <header class="sticky-header">
+        <!-- Top Section with Logo, Title & Login -->
+        <div class="header-main">
+            <div class="container">
+                <div class="row align-items-center">
+                    <div class="col logo-container" id="homeLink">
+                        <!-- Logo Image & Title -->
+                        <img src="images/silent-library-logo.png" alt="Library Logo" class="logo-img">
+                        <span class="header-title">Silent Library</span>
+                    </div>
+                    <div class="col-auto">
+                        <!-- Login Section -->
+                        <!-- This will dynamically change based on login status -->
+                        <div id="loginSection"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <div class="header-nav">
+            <div class="container">
+                <!-- This will dynamically change based on login status -->
+                <div class="d-flex align-items-center" id="navSection"></div>
+            </div>
+        </div>
+    </header>
+
+    <main class="main-content">
+        <div class="book-container">
+            <h1 class="book-title">Book Details</h1>
+            <!-- This section in this version is currently filled with placeholder details  -->
+            <!-- In live version book details should be pulled from the database     -->
+            <div class="container">
+                <img src="images/book-non-fiction-2.jpg" alt="Book Cover" class="book-image">
+                <div class="book-info">
+                    <h3><strong>Title:</strong> Hood Feminism</h3>
+                    <p><strong>Author:</strong> Mikki Kendall</p>
+                    <p><strong>Publisher:</strong> Bloomsbury</p>
+                    <p><strong>Publication Date:</strong> 2021</p>
+                    <p><strong>ISBN:</strong> 9781526622709</p>
+                    <p><strong>Description:</strong> Hood Feminism by Mikki Kendall challenges mainstream feminism and advocates for a more inclusive movement that addresses issues faced by marginalized women. The book highlights the importance of recognizing intersectionality and fighting for social justice for all women.</p>
+                    <!-- In live version the availibility/borrow data will interact with backend     -->
+                    <table class="availability-table">
+                        <tr>
+                            <td>Hardcover</td>
+                            <td class="center-col">Available</td>
+                            <td class="center-col">1 in Library</td>
+                        </tr>
+                        <tr>
+                            <td>EPUB</td>
+                            <td class="center-col">Available</td>
+                            <td><button class="borrow-btn">Borrow</button></td>
+                        </tr>
+                        <tr>
+                            <td>MOBI</td>
+                            <td class="center-col">Unavailable</td>
+                            <td><button class="borrow-btn" disabled>Borrow</button></td>
+                        </tr>
+                        <tr>
+                            <td>PDF</td>
+                            <td class="center-col">Available</td>
+                            <td><button class="borrow-btn">Borrow</button></td>
+                        </tr>
+                        <tr>
+                            <td>AudioBook</td>
+                            <td class="center-col">Available</td>
+                            <td><button class="borrow-btn">Borrow</button></td>
+                        </tr>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </main>
+    <!-- Common footer     -->
+    <footer class="common-footer">
+        <div class="container">
+            <div class="footer-content">
+                <!-- Footer buttons -->
+                <div class="footer-buttons">
+                    <button class="footer-button" id="footerTop">Top of Page</button>
+                    <button class="footer-button" id="footerAbout">About Us</button>
+                    <button class="footer-button" id="footerPrivacy">Privacy Policy</button>
+                    <button class="footer-button" id="footerContacts">Contacts</button>
+                    <button class="footer-button" id="footerSitemap">Sitemap</button>
+                </div>
+                <!-- Footer credits -->
+                <div class="footer-credits">
+                    <span>Created by Pixel Elites</span>
+                    <img src="images/pixel-elites.png" alt="Pixel Elites Logo" class="footer-logo">
+                </div>
+            </div>
+        </div>
+    </footer>
+    <!-- Script for bootstrap     -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
+    <!-- Script for common javascript     -->
+    <script src="js/common.js"></script>
+    <!-- Page-specific javascript (None required) -->
+</body>
+</html>
