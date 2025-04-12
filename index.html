@@ -12,6 +12,9 @@
     <!-- Font from Google -->
     <link href="https://fonts.googleapis.com/css2?family=EB+Garamond:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet">
     
+    <!-- jQuery for responsive carousel adjustments -->
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    
     <!-- Common CSS styles -->
     <link href="css/common.css" rel="stylesheet">
     
@@ -167,6 +170,21 @@
         .carousel-spacing {
             margin-bottom: 40px;
         }
+        
+        /* Responsive adjustments for carousel items */
+        @media (max-width: 992px) {
+            .carousel-item .col-md-4 {
+                flex: 0 0 50%;
+                max-width: 50%;
+            }
+        }
+        
+        @media (max-width: 576px) {
+            .carousel-item .col-md-4 {
+                flex: 0 0 100%;
+                max-width: 100%;
+            }
+        }
     </style>
 </head>
 <body>
@@ -216,110 +234,11 @@
             <h2 class="carousel-title">New Releases</h2>
             <div id="bookCarousel" class="carousel slide" data-bs-ride="carousel">
                 <div class="carousel-inner">
-                    <!-- Slide 1 (3 Books) -->
-                    <div class="carousel-item active">
-                        <div class="row">
-                            <div class="col-md-4">
-                                <a href="book-new.html" class="book-link">
-                                    <div class="book-item">
-                                        <div class="book-number">1</div>
-                                        <img src="images/book-new.jpeg" class="img-fluid" alt="Good Dirt">
-                                        <p>Good Dirt</p>
-                                    </div>
-                                </a>
-                            </div>
-                            <div class="col-md-4">
-                                <a href="book-new-2.html" class="book-link">
-                                    <div class="book-item">
-                                        <div class="book-number">2</div>
-                                        <img src="images/book-new-2.png" class="img-fluid" alt="Good Dirt">
-                                        <p>Homeseeking</p>
-                                    </div>
-                                </a>
-                            </div>
-                            <div class="col-md-4">
-                                <a href="book-new-3.html" class="book-link">
-                                    <div class="book-item">
-                                        <div class="book-number">3</div>
-                                        <img src="images/book-new-3.png" class="img-fluid" alt="Good Dirt">
-                                        <p>Good Girl</p>
-                                    </div>
-                                </a>
-                            </div>
-                        </div>
-                    </div>
-                    
-                    <!-- Slide 2  (3 Books) -->
-                    <div class="carousel-item">
-                        <div class="row">
-                            <div class="col-md-4">
-                                <a href="book-new.html" class="book-link">
-                                    <div class="book-item">
-                                        <div class="book-number">1</div>
-                                        <img src="images/book-new.jpeg" class="img-fluid" alt="Good Dirt">
-                                        <p>Good Dirt</p>
-                                    </div>
-                                </a>
-                            </div>
-                            <div class="col-md-4">
-                                <a href="book-new-2.html" class="book-link">
-                                    <div class="book-item">
-                                        <div class="book-number">2</div>
-                                        <img src="images/book-new-2.png" class="img-fluid" alt="Good Dirt">
-                                        <p>Homeseeking</p>
-                                    </div>
-                                </a>
-                            </div>
-                            <div class="col-md-4">
-                                <a href="book-new-3.html" class="book-link">
-                                    <div class="book-item">
-                                        <div class="book-number">3</div>
-                                        <img src="images/book-new-3.png" class="img-fluid" alt="Good Dirt">
-                                        <p>Good Girl</p>
-                                    </div>
-                                </a>
-                            </div>
-                        </div>
-                    </div>
-                    
-                    <!-- Slide 3  (3 Books) -->
-                    <div class="carousel-item">
-                        <div class="row">
-                            <div class="col-md-4">
-                                <a href="book-new.html" class="book-link">
-                                    <div class="book-item">
-                                        <div class="book-number">1</div>
-                                        <img src="images/book-new.jpeg" class="img-fluid" alt="Good Dirt">
-                                        <p>Good Dirt</p>
-                                    </div>
-                                </a>
-                            </div>
-                            <div class="col-md-4">
-                                <a href="book-new-2.html" class="book-link">
-                                    <div class="book-item">
-                                        <div class="book-number">2</div>
-                                        <img src="images/book-new-2.png" class="img-fluid" alt="Good Dirt">
-                                        <p>Homeseeking</p>
-                                    </div>
-                                </a>
-                            </div>
-                            <div class="col-md-4">
-                                <a href="book-new-3.html" class="book-link">
-                                    <div class="book-item">
-                                        <div class="book-number">3</div>
-                                        <img src="images/book-new-3.png" class="img-fluid" alt="Good Dirt">
-                                        <p>Good Girl</p>
-                                    </div>
-                                </a>
-                            </div>
-                        </div>
-                    </div>
+                    <!-- Slides will be generated dynamically by jQuery based on screen size -->
                 </div>
                 <!-- New Releases Carousel Indicators -->
-                <div class="carousel-indicators">
-                    <button type="button" data-bs-target="#bookCarousel" data-bs-slide-to="0" class="active"></button>
-                    <button type="button" data-bs-target="#bookCarousel" data-bs-slide-to="1"></button>
-                    <button type="button" data-bs-target="#bookCarousel" data-bs-slide-to="2"></button>
+                <div class="carousel-indicators" id="bookCarouselIndicators">
+                    <!-- Indicators will be generated dynamically by jQuery -->
                 </div>
                 <!-- New Releases Carousel L / R Controls -->
                 <button class="carousel-control-prev" type="button" data-bs-target="#bookCarousel" data-bs-slide="prev">
@@ -339,132 +258,11 @@
             <h2 class="carousel-title">Top 10 Fiction Feb 2025</h2>
             <div id="fictionCarousel" class="carousel slide" data-bs-ride="carousel">
                 <div class="carousel-inner">
-                    <!-- Slide 1 (3 Books) -->
-                    <div class="carousel-item active">
-                        <div class="row">
-                            <div class="col-md-4">
-                                <a href="book-fiction.html" class="book-link">
-                                    <div class="book-item">
-                                        <div class="book-number">1</div>
-                                        <img src="images/book-fiction.jpeg" class="img-fluid" alt="A Tale of Two Cities">
-                                        <p>Harry Potter and the Philosopher's Stone</p>
-                                    </div>
-                                </a>
-                            </div>
-                            <div class="col-md-4">
-                                <a href="book-fiction-2.html" class="book-link">
-                                    <div class="book-item">
-                                        <div class="book-number">2</div>
-                                        <img src="images/book-fiction-2.jpeg" class="img-fluid" alt="A Tale of Two Cities">
-                                        <p>Twilight</p>
-                                    </div>
-                                </a>
-                            </div>
-                            <div class="col-md-4">
-                                <a href="book-fiction-3.html" class="book-link">
-                                    <div class="book-item">
-                                        <div class="book-number">3</div>
-                                        <img src="images/book-fiction-3.jpeg" class="img-fluid" alt="A Tale of Two Cities">
-                                        <p>Gone with the Wind</p>
-                                    </div>
-                                </a>
-                            </div>
-                        </div>
-                    </div>
-                    
-                    <!-- Slide 2 (3 Books) -->
-                    <div class="carousel-item">
-                        <div class="row">
-                            <div class="col-md-4">
-                                <a href="book-fiction.html" class="book-link">
-                                    <div class="book-item">
-                                        <div class="book-number">1</div>
-                                        <img src="images/book-fiction.jpeg" class="img-fluid" alt="A Tale of Two Cities">
-                                        <p>Harry Potter and the Philosopher's Stone</p>
-                                    </div>
-                                </a>
-                            </div>
-                            <div class="col-md-4">
-                                <a href="book-fiction-2.html" class="book-link">
-                                    <div class="book-item">
-                                        <div class="book-number">2</div>
-                                        <img src="images/book-fiction-2.jpeg" class="img-fluid" alt="A Tale of Two Cities">
-                                        <p>Twilight</p>
-                                    </div>
-                                </a>
-                            </div>
-                            <div class="col-md-4">
-                                <a href="book-fiction-3.html" class="book-link">
-                                    <div class="book-item">
-                                        <div class="book-number">3</div>
-                                        <img src="images/book-fiction-3.jpeg" class="img-fluid" alt="A Tale of Two Cities">
-                                        <p>Gone with the Wind</p>
-                                    </div>
-                                </a>
-                            </div>
-                        </div>
-                    </div>
-                    
-                    <!-- Slide 3 (3 Books)  -->
-                    <div class="carousel-item">
-                        <div class="row">
-                            <div class="col-md-4">
-                                <a href="book-fiction.html" class="book-link">
-                                    <div class="book-item">
-                                        <div class="book-number">1</div>
-                                        <img src="images/book-fiction.jpeg" class="img-fluid" alt="A Tale of Two Cities">
-                                        <p>Harry Potter and the Philosopher's Stone</p>
-                                    </div>
-                                </a>
-                            </div>
-                            <div class="col-md-4">
-                                <a href="book-fiction-2.html" class="book-link">
-                                    <div class="book-item">
-                                        <div class="book-number">2</div>
-                                        <img src="images/book-fiction-2.jpeg" class="img-fluid" alt="A Tale of Two Cities">
-                                        <p>Twilight</p>
-                                    </div>
-                                </a>
-                            </div>
-                            <div class="col-md-4">
-                                <a href="book-fiction-3.html" class="book-link">
-                                    <div class="book-item">
-                                        <div class="book-number">3</div>
-                                        <img src="images/book-fiction-3.jpeg" class="img-fluid" alt="A Tale of Two Cities">
-                                        <p>Gone with the Wind</p>
-                                    </div>
-                                </a>
-                            </div>
-                        </div>
-                    </div>
-                    
-                    <!-- Slide 4 (1 Books - would it be more attractive to use center col?) -->
-                    <div class="carousel-item">
-                        <div class="row">
-                            <div class="col-md-4">
-                                <a href="book-fiction.html" class="book-link">
-                                    <div class="book-item">
-                                        <div class="book-number">10</div>
-                                        <img src="images/book-fiction.jpeg" class="img-fluid" alt="A Tale of Two Cities">
-                                        <p>Harry Potter and the Philosopher's Stone</p>
-                                    </div>
-                                </a>
-                            </div>
-                            <!-- Empty column -->
-                            <div class="col-md-4"> 
-                            </div>
-                            <!-- Empty column -->
-                            <div class="col-md-4">
-                            </div>
-                        </div>
-                    </div>
+                    <!-- Slides will be generated dynamically by jQuery based on screen size -->
                 </div>
                 <!-- Top 10 Fiction Carousel Indicators -->
-                <div class="carousel-indicators">
-                    <button type="button" data-bs-target="#fictionCarousel" data-bs-slide-to="0" class="active"></button>
-                    <button type="button" data-bs-target="#fictionCarousel" data-bs-slide-to="1"></button>
-                    <button type="button" data-bs-target="#fictionCarousel" data-bs-slide-to="2"></button>
-                    <button type="button" data-bs-target="#fictionCarousel" data-bs-slide-to="3"></button>
+                <div class="carousel-indicators" id="fictionCarouselIndicators">
+                    <!-- Indicators will be generated dynamically by jQuery -->
                 </div>
                 <!-- Top 10 Fiction Carousel L / R Controls -->
                 <button class="carousel-control-prev" type="button" data-bs-target="#fictionCarousel" data-bs-slide="prev">
@@ -484,132 +282,11 @@
             <h2 class="carousel-title">Top 10 Non-Fiction Feb 2025</h2>
             <div id="nonFictionCarousel" class="carousel slide" data-bs-ride="carousel">
                 <div class="carousel-inner">
-                    <!-- Slide 1 (3 Books) -->
-                    <div class="carousel-item active">
-                        <div class="row">
-                            <div class="col-md-4">
-                                <a href="book-non-fiction.html" class="book-link">
-                                    <div class="book-item">
-                                        <div class="book-number">1</div>
-                                        <img src="images/book-non-fiction.png" class="img-fluid" alt="The Domestic Goddess Wannabe Bakes">
-                                        <p class="book-title-centered">The Domestic Goddess Wannabe Bakes</p>
-                                    </div>
-                                </a>
-                            </div>
-                            <div class="col-md-4">
-                                <a href="book-non-fiction-2.html" class="book-link">
-                                    <div class="book-item">
-                                        <div class="book-number">2</div>
-                                        <img src="images/book-non-fiction-2.jpg" class="img-fluid" alt="The Domestic Goddess Wannabe Bakes">
-                                        <p class="book-title-centered">Hood Feminism</p>
-                                    </div>
-                                </a>
-                            </div>
-                            <div class="col-md-4">
-                                <a href="book-non-fiction-3.html" class="book-link">
-                                    <div class="book-item">
-                                        <div class="book-number">3</div>
-                                        <img src="images/book-non-fiction-3.jpg" class="img-fluid" alt="The Domestic Goddess Wannabe Bakes">
-                                        <p class="book-title-centered">The Life-Changing Magic of Tidying Up</p>
-                                    </div>
-                                </a>
-                            </div>
-                        </div>
-                    </div>
-                    
-                    <!-- Slide 2 (3 Books) -->
-                    <div class="carousel-item">
-                        <div class="row">
-                            <div class="col-md-4">
-                                <a href="book-non-fiction.html" class="book-link">
-                                    <div class="book-item">
-                                        <div class="book-number">1</div>
-                                        <img src="images/book-non-fiction.png" class="img-fluid" alt="The Domestic Goddess Wannabe Bakes">
-                                        <p class="book-title-centered">The Domestic Goddess Wannabe Bakes</p>
-                                    </div>
-                                </a>
-                            </div>
-                            <div class="col-md-4">
-                                <a href="book-non-fiction-2.html" class="book-link">
-                                    <div class="book-item">
-                                        <div class="book-number">2</div>
-                                        <img src="images/book-non-fiction-2.jpg" class="img-fluid" alt="The Domestic Goddess Wannabe Bakes">
-                                        <p class="book-title-centered">Hood Feminism</p>
-                                    </div>
-                                </a>
-                            </div>
-                            <div class="col-md-4">
-                                <a href="book-non-fiction-3.html" class="book-link">
-                                    <div class="book-item">
-                                        <div class="book-number">3</div>
-                                        <img src="images/book-non-fiction-3.jpg" class="img-fluid" alt="The Domestic Goddess Wannabe Bakes">
-                                        <p class="book-title-centered">The Life-Changing Magic of Tidying Up</p>
-                                    </div>
-                                </a>
-                            </div>
-                        </div>
-                    </div>
-                    
-                    <!-- Slide 3 (3 Books) -->
-                    <div class="carousel-item">
-                        <div class="row">
-                            <div class="col-md-4">
-                                <a href="book-non-fiction.html" class="book-link">
-                                    <div class="book-item">
-                                        <div class="book-number">1</div>
-                                        <img src="images/book-non-fiction.png" class="img-fluid" alt="The Domestic Goddess Wannabe Bakes">
-                                        <p class="book-title-centered">The Domestic Goddess Wannabe Bakes</p>
-                                    </div>
-                                </a>
-                            </div>
-                            <div class="col-md-4">
-                                <a href="book-non-fiction-2.html" class="book-link">
-                                    <div class="book-item">
-                                        <div class="book-number">2</div>
-                                        <img src="images/book-non-fiction-2.jpg" class="img-fluid" alt="The Domestic Goddess Wannabe Bakes">
-                                        <p class="book-title-centered">Hood Feminism</p>
-                                    </div>
-                                </a>
-                            </div>
-                            <div class="col-md-4">
-                                <a href="book-non-fiction-3.html" class="book-link">
-                                    <div class="book-item">
-                                        <div class="book-number">3</div>
-                                        <img src="images/book-non-fiction-3.jpg" class="img-fluid" alt="The Domestic Goddess Wannabe Bakes">
-                                        <p class="book-title-centered">The Life-Changing Magic of Tidying Up</p>
-                                    </div>
-                                </a>
-                            </div>
-                        </div>
-                    </div>
-                    
-                    <!-- Slide 4 (1 Books - would it be more attractive to use center col?) -->
-                    <div class="carousel-item">
-                        <div class="row">
-                            <div class="col-md-4">
-                                <a href="book-non-fiction.html" class="book-link">
-                                    <div class="book-item">
-                                        <div class="book-number">10</div>
-                                        <img src="images/book-non-fiction.png" class="img-fluid" alt="The Domestic Goddess Wannabe Bakes">
-                                        <p class="book-title-centered">The Domestic Goddess Wannabe Bakes</p>
-                                    </div>
-                                </a>
-                            </div>
-                            <div class="col-md-4">
-                                <!-- Empty column -->
-                            </div>
-                            <div class="col-md-4">
-                                <!-- Empty column -->
-                            </div>
-                        </div>
-                    </div>
+                    <!-- Slides will be generated dynamically by jQuery based on screen size -->
                 </div>
                 <!-- Top 10 Non-Fiction Carousel Indicators -->
-                <div class="carousel-indicators">
-                    <button type="button" data-bs-target="#nonFictionCarousel" data-bs-slide-to="0" class="active"></button>
-                    <button type="button" data-bs-target="#nonFictionCarousel" data-bs-slide-to="1"></button>
-                    <button type="button" data-bs-target="#nonFictionCarousel" data-bs-slide-to="2"></button>
-                    <button type="button" data-bs-target="#nonFictionCarousel" data-bs-slide-to="3"></button>
+                <div class="carousel-indicators" id="nonFictionCarouselIndicators">
+                    <!-- Indicators will be generated dynamically by jQuery -->
                 </div>
                 <!-- Top 10 Fiction Carousel L / R Controls -->
                 <button class="carousel-control-prev" type="button" data-bs-target="#nonFictionCarousel" data-bs-slide="prev">
@@ -645,6 +322,266 @@
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
     <!-- Common JavaScript -->
     <script src="js/common.js"></script>
-    <!-- Page-specific javascript (None required) -->
+    <!-- Page-specific javascript -->
+    <script>
+        $(document).ready(function() {
+            // Book data for each carousel
+            const bookData = [
+                {
+                    id: 1,
+                    title: "Good Dirt",
+                    image: "images/book-new.jpeg",
+                    link: "book-new.html"
+                },
+                {
+                    id: 2,
+                    title: "Homeseeking",
+                    image: "images/book-new-2.png",
+                    link: "book-new-2.html"
+                },
+                {
+                    id: 3,
+                    title: "Good Girl",
+                    image: "images/book-new-3.png",
+                    link: "book-new-3.html"
+                },
+                {
+                    id: 4,
+                    title: "Good Dirt",
+                    image: "images/book-new.jpeg",
+                    link: "book-new.html"
+                },
+                {
+                    id: 5,
+                    title: "Homeseeking",
+                    image: "images/book-new-2.png",
+                    link: "book-new-2.html"
+                },
+                {
+                    id: 6,
+                    title: "Good Girl",
+                    image: "images/book-new-3.png",
+                    link: "book-new-3.html"
+                },
+                {
+                    id: 7,
+                    title: "Good Dirt",
+                    image: "images/book-new.jpeg",
+                    link: "book-new.html"
+                },
+                {
+                    id: 8,
+                    title: "Homeseeking",
+                    image: "images/book-new-2.png",
+                    link: "book-new-2.html"
+                },
+                {
+                    id: 9,
+                    title: "Good Girl",
+                    image: "images/book-new-3.png",
+                    link: "book-new-3.html"
+                }
+            ];
+
+            const fictionData = [
+                {
+                    id: 1,
+                    title: "Harry Potter and the Philosopher's Stone",
+                    image: "images/book-fiction.jpeg",
+                    link: "book-fiction.html"
+                },
+                {
+                    id: 2,
+                    title: "Twilight",
+                    image: "images/book-fiction-2.jpeg",
+                    link: "book-fiction-2.html"
+                },
+                {
+                    id: 3,
+                    title: "Gone with the Wind",
+                    image: "images/book-fiction-3.jpeg",
+                    link: "book-fiction-3.html"
+                },
+                {
+                    id: 4,
+                    title: "Harry Potter and the Philosopher's Stone",
+                    image: "images/book-fiction.jpeg",
+                    link: "book-fiction.html"
+                },
+                {
+                    id: 5,
+                    title: "Twilight",
+                    image: "images/book-fiction-2.jpeg",
+                    link: "book-fiction-2.html"
+                },
+                {
+                    id: 6,
+                    title: "Gone with the Wind",
+                    image: "images/book-fiction-3.jpeg",
+                    link: "book-fiction-3.html"
+                },
+                {
+                    id: 7,
+                    title: "Harry Potter and the Philosopher's Stone",
+                    image: "images/book-fiction.jpeg",
+                    link: "book-fiction.html"
+                },
+                {
+                    id: 8,
+                    title: "Twilight",
+                    image: "images/book-fiction-2.jpeg",
+                    link: "book-fiction-2.html"
+                },
+                {
+                    id: 9,
+                    title: "Gone with the Wind",
+                    image: "images/book-fiction-3.jpeg",
+                    link: "book-fiction-3.html"
+                },
+                {
+                    id: 10,
+                    title: "Harry Potter and the Philosopher's Stone",
+                    image: "images/book-fiction.jpeg",
+                    link: "book-fiction.html"
+                }
+            ];
+
+            const nonFictionData = [
+                {
+                    id: 1,
+                    title: "The Domestic Goddess Wannabe Bakes",
+                    image: "images/book-non-fiction.png",
+                    link: "book-non-fiction.html"
+                },
+                {
+                    id: 2,
+                    title: "Hood Feminism",
+                    image: "images/book-non-fiction-2.jpg",
+                    link: "book-non-fiction-2.html"
+                },
+                {
+                    id: 3,
+                    title: "The Life-Changing Magic of Tidying Up",
+                    image: "images/book-non-fiction-3.jpg",
+                    link: "book-non-fiction-3.html"
+                },
+                {
+                    id: 4,
+                    title: "The Domestic Goddess Wannabe Bakes",
+                    image: "images/book-non-fiction.png",
+                    link: "book-non-fiction.html"
+                },
+                {
+                    id: 5,
+                    title: "Hood Feminism",
+                    image: "images/book-non-fiction-2.jpg",
+                    link: "book-non-fiction-2.html"
+                },
+                {
+                    id: 6,
+                    title: "The Life-Changing Magic of Tidying Up",
+                    image: "images/book-non-fiction-3.jpg",
+                    link: "book-non-fiction-3.html"
+                },
+                {
+                    id: 7,
+                    title: "The Domestic Goddess Wannabe Bakes",
+                    image: "images/book-non-fiction.png",
+                    link: "book-non-fiction.html"
+                },
+                {
+                    id: 8,
+                    title: "Hood Feminism",
+                    image: "images/book-non-fiction-2.jpg",
+                    link: "book-non-fiction-2.html"
+                },
+                {
+                    id: 9,
+                    title: "The Life-Changing Magic of Tidying Up",
+                    image: "images/book-non-fiction-3.jpg",
+                    link: "book-non-fiction-3.html"
+                },
+                {
+                    id: 10,
+                    title: "The Domestic Goddess Wannabe Bakes",
+                    image: "images/book-non-fiction.png",
+                    link: "book-non-fiction.html"
+                }
+            ];
+
+            // Function to determine items per slide based on screen width
+            function getItemsPerSlide() {
+                if ($(window).width() < 576) {
+                    return 1; // 1 item on extra small screens
+                } else if ($(window).width() < 992) {
+                    return 2; // 2 items on medium screens
+                } else {
+                    return 3; // 3 items on large screens
+                }
+            }
+
+            // Function to generate carousel slides
+            function generateCarousel(data, carouselId, indicatorId) {
+                const itemsPerSlide = getItemsPerSlide();
+                const totalSlides = Math.ceil(data.length / itemsPerSlide);
+                let carouselInner = '';
+                let indicators = '';
+                
+                // Generate slides
+                for (let i = 0; i < totalSlides; i++) {
+                    const activeClass = i === 0 ? 'active' : '';
+                    let items = '';
+                    
+                    // Add items to current slide
+                    for (let j = 0; j < itemsPerSlide; j++) {
+                        const index = i * itemsPerSlide + j;
+                        if (index >= data.length) break;
+                        
+                        const item = data[index];
+                        items += `
+                            <div class="col-md-4">
+                                <a href="${item.link}" class="book-link">
+                                    <div class="book-item">
+                                        <div class="book-number">${item.id}</div>
+                                        <img src="${item.image}" class="img-fluid" alt="${item.title}">
+                                        <p>${item.title}</p>
+                                    </div>
+                                </a>
+                            </div>
+                        `;
+                    }
+                    
+                    carouselInner += `
+                        <div class="carousel-item ${activeClass}">
+                            <div class="row">
+                                ${items}
+                            </div>
+                        </div>
+                    `;
+                    
+                    // Generate indicators
+                    indicators += `
+                        <button type="button" data-bs-target="#${carouselId}" data-bs-slide-to="${i}" class="${activeClass}"></button>
+                    `;
+                }
+                
+                // Update DOM
+                $(`#${carouselId} .carousel-inner`).html(carouselInner);
+                $(`#${indicatorId}`).html(indicators);
+            }
+
+            // Initialize carousels
+            generateCarousel(bookData, 'bookCarousel', 'bookCarouselIndicators');
+            generateCarousel(fictionData, 'fictionCarousel', 'fictionCarouselIndicators');
+            generateCarousel(nonFictionData, 'nonFictionCarousel', 'nonFictionCarouselIndicators');
+
+            // Regenerate carousels on window resize
+            $(window).resize(function() {
+                generateCarousel(bookData, 'bookCarousel', 'bookCarouselIndicators');
+                generateCarousel(fictionData, 'fictionCarousel', 'fictionCarouselIndicators');
+                generateCarousel(nonFictionData, 'nonFictionCarousel', 'nonFictionCarouselIndicators');
+            });
+        });
+    </script>
 </body>
 </html>
